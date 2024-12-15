@@ -37,8 +37,39 @@ const galleryItems = images
 
 gallery.insertAdjacentHTML("beforeend", galleryItems);
 
-const imagesInGallery = document.querySelectorAll(".gallery-image");
-imagesInGallery.forEach((image) => {
-  image.style.width = "300px";
-  image.style.height = "auto";
-});
+const style = document.createElement("style");
+style.textContent = `
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+  }
+
+  .gallery-item {
+    flex: 1 1 calc(33.333% - 16px);
+    max-width: 360px;
+    
+    box-sizing: border-box;
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    // border-radius: 8px;
+    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    // transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  // .gallery-image:hover {
+  //   // transform: scale(1.05);
+  //   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  // }
+`;
+
+document.head.appendChild(style);
+
